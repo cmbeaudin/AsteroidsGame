@@ -59,7 +59,6 @@ public void draw() {
   	// 		ship.accelerate(-0.5);
   	// 	}
   	// }
-  	System.out.println(ship.getDirectionX());
 }
 
 boolean dPressed;
