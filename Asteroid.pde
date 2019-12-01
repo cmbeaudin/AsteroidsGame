@@ -8,14 +8,14 @@ class Asteroid extends Floater {
     	xCorners = new int[] {12*dilation, 11*dilation, 5*dilation, -12*dilation, -11*dilation, -13*dilation, 1*dilation, 5*dilation};
     	yCorners = new int[] {-1*dilation, 4*dilation, 6*dilation, 2*dilation, -1*dilation, -6*dilation, -5*dilation, -3*dilation};
     	myColor = #767c87;
-        myStrokeColor = #767c87;
-    	myCenterX = width/2;
-    	myCenterY = height/2;
-    	myDirectionX = 0;
-    	myDirectionY = 0;
-    	myPointDirection = 0;
+    	myCenterX = (int)(Math.random()*width);
+    	myCenterY = (int)(Math.random()*height);
+    	myDirectionX = (Math.random()*3)-1;
+    	myDirectionY = (Math.random()*3)-1;
+    	myPointDirection = (int)(Math.random()*360);
 	}
 	public void move() {
-		myPointDirection += rotSpeed;
+		turn(rotSpeed);
+		super.move();
 	}
 }

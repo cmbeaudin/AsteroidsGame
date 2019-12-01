@@ -4,8 +4,7 @@ class Spaceship extends Floater
     	corners = 15;
     	xCorners = new int[] {23, 19, -7, -10, -18, -18, -23, -18, -18, -23, -18, -18, -10, -7, 19};
     	yCorners = new int[] {0, 5, 8, 13, 16, 6, 6, 1, -1, -6, -6, -16, -13, -8, -5};
-    	myColor = #E1D9C6;
-        myStrokeColor = #bfb1aa;
+    	myColor = #e6ecf5;
     	myCenterX = width/2;
     	myCenterY = height/2;
     	myDirectionX = 0;

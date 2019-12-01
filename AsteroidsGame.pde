@@ -32,7 +32,6 @@ public void draw() {
   		asteroids.get(i).move();
   	}
 
-  	strokeWeight(2);
   	ship.show();
   	ship.move();
 
