@@ -1,6 +1,12 @@
 Spaceship ship;
+Flame fire;
 Star[] starlings;
 ArrayList <Asteroid> asteroids;
+boolean dPressed;
+boolean aPressed;
+boolean wPressed;
+boolean sPressed;
+
 
 public void setup() {
 	size(750, 750);
@@ -8,18 +14,20 @@ public void setup() {
 	noStroke();
 
  	ship = new Spaceship();
- 	starlings = new Star[10000];
+ 	fire = new Flame();
+ 	starlings = new Star[7500];
  	asteroids = new ArrayList <Asteroid>();
 
  	for (int i = 0; i < starlings.length; i++) {
  		starlings[i] = new Star();
  	}
 
- 	for (int i = 0; i < 20; i++){
+ 	for (int i = 0; i < 10; i++){
  		asteroids.add(i, new Asteroid());
  	}
 
 }
+
 public void draw() {
 	background(8, 16, 20);
 
@@ -34,19 +42,27 @@ public void draw() {
 
   	ship.show();
   	ship.move();
+  	fire.move();
+  	fire.show();
 
   	if (dPressed == true) {
   		ship.turn(7);
+  		fire.turn(7);
   	}
   	if (aPressed == true) {
   		ship.turn(-7);
+  		fire.turn(-7);
   	}
   	if (wPressed == true) {
+  		
   		ship.accelerate(0.5);
+  		fire.accelerate(0.45);
   	}
   	if (sPressed == true) {
   		ship.accelerate(-0.5);
+  		fire.accelerate(-0.5);
   	}
+
   	// if (wPressed == false && sPressed == false && (ship.getDirectionX() > 0 || ship.getDirectionY() > 0 || ship.getDirectionX() < 0 || ship.getDirectionY() < 0)) {
   	// 	if (ship.getDirectionX() > 0) {
   	// 		ship.accelerate(-0.5);
@@ -60,11 +76,6 @@ public void draw() {
   	// 	}
   	// }
 }
-
-boolean dPressed;
-boolean aPressed;
-boolean wPressed;
-boolean sPressed;
 
 public void keyPressed() {
 	if (key == 'a') {
