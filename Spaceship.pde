@@ -11,12 +11,37 @@ class Spaceship extends Floater
     	mDirectionY = 0;
     	mPointDirection = 0;
     }
-    public void setRandomX() { mCenterX = (int)(Math.random()*width); }
-    public void setRandomY() { mCenterY = (int)(Math.random()*height); }
-    public void setRandomDirectionPoint() { mPointDirection = (int)(Math.random()*360); }
-    public void setDirectionX(double newDirectionX) { mDirectionX = newDirectionX; }
-    public void setDirectionY(double newDirectionY) { mDirectionY = newDirectionY; }
-    public double getDirectionX() { return mDirectionX; }
-    public double getDirectionY() { return mDirectionY; }
+
+    public void setCenterX(int newCenterX) { 
+        mCenterX = newCenterX; 
+    }
+    public void setCenterY(int newCenterY) { 
+        mCenterY = newCenterY; 
+    }
+    public void setPointDirection(int newPointDirection) { 
+        mPointDirection = newPointDirection; 
+    }
+    public void setDirectionX(double newDirectionX) { 
+        mDirectionX = newDirectionX; 
+    }
+    public void setDirectionY(double newDirectionY) { 
+        mDirectionY = newDirectionY; 
+    }
+
+    public double getDirectionX() { 
+        return mDirectionX; 
+    }
+    public double getDirectionY() { 
+        return mDirectionY; 
+    }
+    public double getCenterX() { 
+        return mDirectionX; 
+    }
+    public double getCenterY() { 
+        return mDirectionY; 
+    }
+    public double getPointDirection() {
+        return mPointDirection;
+    }
 } 
 

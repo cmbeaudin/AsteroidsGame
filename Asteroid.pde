@@ -23,8 +23,8 @@ class Asteroid extends Floater {
     		(int)(Math.random()*9)*dilation, 
     		(int)(Math.random()*9)-9*dilation, 
     		(int)(Math.random()*4)-13*dilation, 
-    		(int)(Math.random())-14*dilation, 
-    		(int)(Math.random())-13*dilation, 
+    		-14*dilation, 
+    		-13*dilation, 
     		(int)(Math.random()*20)-13*dilation, 
     		(int)(Math.random()*2)+7*dilation,
     		(int)(Math.random()*5)+9*dilation

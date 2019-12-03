@@ -6,7 +6,7 @@ boolean dPressed;
 boolean aPressed;
 boolean wPressed;
 boolean sPressed;
-
+boolean qPressed;
 
 public void setup() {
 	size(750, 750);
@@ -57,10 +57,29 @@ public void draw() {
   		ship.accelerate(-0.5);
   		fire.accelerate(-0.5);
   	}
-
+  	if (qPressed == true) {
+  		ship.setDirectionX(0);
+		ship.setDirectionY(0);
+		// fire.setDirectionX(0);
+		// fire.setDirectionY(0);
+		ship.setCenterX((int)(Math.random()*width));
+		ship.setCenterY((int)(Math.random()*height));
+		// fire.setCenterX(ship.getCenterX());
+		// fire.setCenterY(ship.getCenterY());
+		ship.setPointDirection((int)(Math.random()*360));
+		// fire.setPointDirection(ship.getPointDirection());
+  	}
+  	if (wPressed == false && sPressed == false) {
+  		ship.setDirectionX(0.95*ship.getDirectionX());
+  		ship.setDirectionY(0.95*ship.getDirectionY());
+  		fire.setDirectionX(0.95*fire.getDirectionX());
+  		fire.setDirectionY(0.95*fire.getDirectionY());
+  	}
+  	
   	ship.show();
   	ship.move();
   	fire.move();
+
 }
 
 public void keyPressed() {
@@ -77,11 +96,7 @@ public void keyPressed() {
 		sPressed = true;
 	}
 	if (key == 'q') {
-		ship.setDirectionX(0);
-		ship.setDirectionY(0);
-		ship.setRandomX();
-		ship.setRandomY();
-		ship.setRandomDirectionPoint();
+		qPressed = true;
 	}
 }
 
@@ -97,5 +112,8 @@ public void keyReleased() {
 	}
 	if (key == 's') {
 		sPressed = false;
+	}
+	if (key == 'q') {
+		qPressed = false;
 	}
 }
