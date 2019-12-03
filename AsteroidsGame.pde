@@ -54,27 +54,14 @@ public void draw() {
   		fire.turn(-7);
   	}
   	if (wPressed == true) {
-  		
   		ship.accelerate(0.5);
-  		fire.accelerate(0.45);
+  		fire.accelerate(0.5);
   	}
   	if (sPressed == true) {
   		ship.accelerate(-0.5);
   		fire.accelerate(-0.5);
   	}
 
-  	// if (wPressed == false && sPressed == false && (ship.getDirectionX() > 0 || ship.getDirectionY() > 0 || ship.getDirectionX() < 0 || ship.getDirectionY() < 0)) {
-  	// 	if (ship.getDirectionX() > 0) {
-  	// 		ship.accelerate(-0.5);
-  	// 	} else if (ship.getDirectionX() < 0) {
-  	// 		ship.accelerate(0.5);
-  	// 	}
-  	// 	if (ship.getDirectionY() > 0) {
-  	// 		ship.accelerate(-0.5);
-  	// 	} else if (ship.getDirectionY() < 0) {
-  	// 		ship.accelerate(-0.5);
-  	// 	}
-  	// }
 }
 
 public void keyPressed() {
