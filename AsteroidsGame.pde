@@ -22,7 +22,7 @@ public void setup() {
  		starlings[i] = new Star();
  	}
 
- 	for (int i = 0; i < 10; i++){
+ 	for (int i = 0; i < 20; i++){
  		asteroids.add(i, new Asteroid());
  	}
 
@@ -40,11 +40,6 @@ public void draw() {
   		asteroids.get(i).move();
   	}
 
-  	ship.show();
-  	ship.move();
-  	fire.move();
-  	fire.show();
-
   	if (dPressed == true) {
   		ship.turn(7);
   		fire.turn(7);
@@ -54,6 +49,7 @@ public void draw() {
   		fire.turn(-7);
   	}
   	if (wPressed == true) {
+  		fire.show();
   		ship.accelerate(0.5);
   		fire.accelerate(0.5);
   	}
@@ -62,6 +58,9 @@ public void draw() {
   		fire.accelerate(-0.5);
   	}
 
+  	ship.show();
+  	ship.move();
+  	fire.move();
 }
 
 public void keyPressed() {
