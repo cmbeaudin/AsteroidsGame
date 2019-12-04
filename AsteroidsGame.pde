@@ -6,7 +6,6 @@ boolean dPressed;
 boolean aPressed;
 boolean wPressed;
 boolean sPressed;
-boolean qPressed;
 
 public void setup() {
 	size(750, 750);
@@ -15,7 +14,7 @@ public void setup() {
 
  	ship = new Spaceship();
  	fire = new Flame();
- 	starlings = new Star[7500];
+ 	starlings = new Star[2500];
  	asteroids = new ArrayList <Asteroid>();
 
  	for (int i = 0; i < starlings.length; i++) {
@@ -38,10 +37,8 @@ public void draw() {
   	for (int i = 0; i < asteroids.size(); i++) {
   		asteroids.get(i).show();
   		asteroids.get(i).move();
-  		asteroids.get(i).setColor((int)(Math.random()*5));
   	}
 
-  	ship.show();
   	if (dPressed == true) {
   		ship.turn(7);
   		fire.turn(7);
@@ -52,27 +49,12 @@ public void draw() {
   	}
   	if (wPressed == true) {
   		fire.show();
-  		ship.accelerate(0.5);
-  		fire.accelerate(0.5);
+  		ship.accelerate(0.2);
+  		fire.accelerate(0.2);
   	}
   	if (sPressed == true) {
-  		ship.accelerate(-0.5);
-  		fire.accelerate(-0.5);
-  	}
-  	if (qPressed == true) {
-  		int ranPointDirection = (int)(Math.random()*360);
-      	int ranSetX = (int)(Math.random()*width);
-      	int ranSetY = (int)(Math.random()*height);     
-      	ship.setDirectionX(0);
-      	ship.setDirectionY(0);    
-      	ship.setPointDirection(ranPointDirection);
-      	ship.setCenterX(ranSetX);
-      	ship.setCenterY(ranSetY);
-      	fire.setDirectionX(0);
-      	fire.setDirectionY(0);    
-      	fire.setPointDirection(ranPointDirection);
-      	fire.setCenterX(ranSetX);
-      	fire.setCenterY(ranSetY);
+  		ship.accelerate(-0.2);
+  		fire.accelerate(-0.2);
   	}
   	if (wPressed == false && sPressed == false) {
   		ship.setDirectionX(0.95*ship.getDirectionX());
@@ -81,10 +63,11 @@ public void draw() {
   		fire.setDirectionY(0.95*fire.getDirectionY());
   	}
   	
-  	
+  	ship.show();
   	ship.move();
   	fire.move();
 
+    System.out.println(ship.getPointDirection() + "+" + fire.getPointDirection());
 }
 
 public void keyPressed() {
@@ -100,9 +83,22 @@ public void keyPressed() {
 	if (key == 's') {
 		sPressed = true;
 	}
-	if (key == 'q') {
-		qPressed = true;
-	}
+  if (key == 'q') {
+      int ranPointDirection = (int)(Math.random()*360);
+      int ranSetX = (int)(Math.random()*width);
+      int ranSetY = (int)(Math.random()*height);     
+      ship.setDirectionX(0);
+      ship.setDirectionY(0);    
+      ship.setPointDirection(ranPointDirection);
+      ship.setCenterX(ranSetX);
+      ship.setCenterY(ranSetY);
+      fire.setDirectionX(0);
+      fire.setDirectionY(0);    
+      fire.setPointDirection(ranPointDirection);
+      fire.setCenterX(ranSetX);
+      fire.setCenterY(ranSetY);
+      System.out.println(ranPointDirection);
+    }
 }
 
 public void keyReleased() {
@@ -117,8 +113,5 @@ public void keyReleased() {
 	}
 	if (key == 's') {
 		sPressed = false;
-	}
-	if (key == 'q') {
-		qPressed = false;
 	}
 }
