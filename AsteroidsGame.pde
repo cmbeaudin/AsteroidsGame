@@ -38,8 +38,10 @@ public void draw() {
   	for (int i = 0; i < asteroids.size(); i++) {
   		asteroids.get(i).show();
   		asteroids.get(i).move();
+  		asteroids.get(i).setColor((int)(Math.random()*5));
   	}
 
+  	ship.show();
   	if (dPressed == true) {
   		ship.turn(7);
   		fire.turn(7);
@@ -58,16 +60,19 @@ public void draw() {
   		fire.accelerate(-0.5);
   	}
   	if (qPressed == true) {
-  		ship.setDirectionX(0);
-		ship.setDirectionY(0);
-		// fire.setDirectionX(0);
-		// fire.setDirectionY(0);
-		ship.setCenterX((int)(Math.random()*width));
-		ship.setCenterY((int)(Math.random()*height));
-		// fire.setCenterX(ship.getCenterX());
-		// fire.setCenterY(ship.getCenterY());
-		ship.setPointDirection((int)(Math.random()*360));
-		// fire.setPointDirection(ship.getPointDirection());
+  		int ranPointDirection = (int)(Math.random()*360);
+      	int ranSetX = (int)(Math.random()*width);
+      	int ranSetY = (int)(Math.random()*height);     
+      	ship.setDirectionX(0);
+      	ship.setDirectionY(0);    
+      	ship.setPointDirection(ranPointDirection);
+      	ship.setCenterX(ranSetX);
+      	ship.setCenterY(ranSetY);
+      	fire.setDirectionX(0);
+      	fire.setDirectionY(0);    
+      	fire.setPointDirection(ranPointDirection);
+      	fire.setCenterX(ranSetX);
+      	fire.setCenterY(ranSetY);
   	}
   	if (wPressed == false && sPressed == false) {
   		ship.setDirectionX(0.95*ship.getDirectionX());
@@ -76,7 +81,7 @@ public void draw() {
   		fire.setDirectionY(0.95*fire.getDirectionY());
   	}
   	
-  	ship.show();
+  	
   	ship.move();
   	fire.move();
 
