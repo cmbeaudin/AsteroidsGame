@@ -2,7 +2,7 @@ class Asteroid extends Floater {
 	private int rotSpeed;
 	private int dilation;
 	public Asteroid() {
-		dilation = 3;
+		dilation = (int)(Math.random()*2)+2;
 		rotSpeed = (int)(Math.random()*20)-10;
 
     	xCorners = new int[] {
@@ -25,8 +25,8 @@ class Asteroid extends Floater {
     		(int)(Math.random()*4)-13*dilation, 
     		-14*dilation, 
     		-13*dilation, 
-    		(int)(Math.random()*20)-13*dilation, 
-    		(int)(Math.random()*2)+7*dilation,
+    		(int)(Math.random()*14)-13*dilation, 
+    		(int)(Math.random()*8)+7*dilation,
     		(int)(Math.random()*5)+9*dilation
     	};
 

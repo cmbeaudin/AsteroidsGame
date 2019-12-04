@@ -22,7 +22,7 @@ public void setup() {
  		starlings[i] = new Star();
  	}
 
- 	for (int i = 0; i < 20; i++){
+ 	for (int i = 0; i < 10; i++){
  		asteroids.add(i, new Asteroid());
  	}
 
