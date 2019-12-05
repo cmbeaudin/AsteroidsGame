@@ -7,7 +7,7 @@ class Star //note that this class does NOT extend Floater
  		mX = (float)(Math.random()*width);
  		mY = (float)(Math.random()*height);
  		mSize = (float)1.2;
- 		mOpacity = (float)(Math.random()*255);
+ 		mOpacity = (float)(Math.random()*200);
  		mColor = color(255, 242, 173);
   	}
 

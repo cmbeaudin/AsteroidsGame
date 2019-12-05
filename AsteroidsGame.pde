@@ -1,5 +1,6 @@
 Spaceship ship;
 Flame fire;
+Bullet pew;
 Star[] starlings;
 ArrayList <Asteroid> asteroids;
 boolean dPressed;
@@ -14,6 +15,7 @@ public void setup() {
 
  	ship = new Spaceship();
  	fire = new Flame();
+  pew = new Bullet(ship);
  	starlings = new Star[2500];
  	asteroids = new ArrayList <Asteroid>();
 
@@ -49,12 +51,12 @@ public void draw() {
   	}
   	if (wPressed == true) {
   		fire.show();
-  		ship.accelerate(0.2);
-  		fire.accelerate(0.2);
+  		ship.accelerate(0.5);
+  		fire.accelerate(0.5);
   	}
   	if (sPressed == true) {
-  		ship.accelerate(-0.2);
-  		fire.accelerate(-0.2);
+  		ship.accelerate(-0.5);
+  		fire.accelerate(-0.5);
   	}
   	if (wPressed == false && sPressed == false) {
   		ship.setDirectionX(0.95*ship.getDirectionX());
@@ -66,8 +68,9 @@ public void draw() {
   	ship.show();
   	ship.move();
   	fire.move();
+    pew.show();
+    pew.move();
 
-    System.out.println(ship.getPointDirection() + "+" + fire.getPointDirection());
 }
 
 public void keyPressed() {
@@ -97,7 +100,6 @@ public void keyPressed() {
       fire.setPointDirection(ranPointDirection);
       fire.setCenterX(ranSetX);
       fire.setCenterY(ranSetY);
-      System.out.println(ranPointDirection);
     }
 }
 

@@ -12,7 +12,7 @@ class Flame extends Floater {
 	}
 
     public void setPointDirection(double newPointDirection) { 
-        mPointDirection = (int)(Math.random()*360); 
+        mPointDirection = newPointDirection; 
     }
     public void setDirectionX(double newDirectionX) { 
         mDirectionX = newDirectionX; 
