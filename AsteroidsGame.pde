@@ -1,8 +1,9 @@
 Spaceship ship;
 Flame fire;
-Bullet pew;
+Flame rocket;
 Star[] starlings;
 ArrayList <Asteroid> asteroids;
+ArrayList <Bullet> bullets; 
 boolean dPressed;
 boolean aPressed;
 boolean wPressed;
@@ -14,10 +15,11 @@ public void setup() {
 	noStroke();
 
  	ship = new Spaceship();
- 	fire = new Flame();
-  pew = new Bullet(ship);
+ 	fire = new Flame(#ff2600);
+ 	rocket = new Flame(#1567eb);
  	starlings = new Star[2500];
  	asteroids = new ArrayList <Asteroid>();
+ 	bullets = new ArrayList <Bullet>();
 
  	for (int i = 0; i < starlings.length; i++) {
  		starlings[i] = new Star();
@@ -30,46 +32,55 @@ public void setup() {
 }
 
 public void draw() {
-	background(8, 16, 20);
+	background(#080a10);
 
   	for (int i = 0; i < starlings.length; i++) {
   		starlings[i].show();
   	}
-
   	for (int i = 0; i < asteroids.size(); i++) {
   		asteroids.get(i).show();
   		asteroids.get(i).move();
+  	}
+  	for (int i = bullets.size() - 1; i >= 0; i--) {
+  		bullets.get(i).move();
+  		bullets.get(i).show();
   	}
 
   	if (dPressed == true) {
   		ship.turn(7);
   		fire.turn(7);
+  		rocket.turn(7);
   	}
   	if (aPressed == true) {
   		ship.turn(-7);
   		fire.turn(-7);
+  		rocket.turn(-7);
   	}
   	if (wPressed == true) {
   		fire.show();
-  		ship.accelerate(0.5);
-  		fire.accelerate(0.5);
+  		ship.accelerate(0.3);
+  		fire.accelerate(0.3);
+  		rocket.accelerate(0.3);
   	}
   	if (sPressed == true) {
-  		ship.accelerate(-0.5);
-  		fire.accelerate(-0.5);
+  		rocket.show();
+  		ship.accelerate(-0.3);
+  		fire.accelerate(-0.3);
+  		rocket.accelerate(-0.3);
   	}
   	if (wPressed == false && sPressed == false) {
-  		ship.setDirectionX(0.95*ship.getDirectionX());
-  		ship.setDirectionY(0.95*ship.getDirectionY());
-  		fire.setDirectionX(0.95*fire.getDirectionX());
-  		fire.setDirectionY(0.95*fire.getDirectionY());
+  		ship.setDirectionX(0.97*ship.getDirectionX());
+  		ship.setDirectionY(0.97*ship.getDirectionY());
+  		fire.setDirectionX(0.97*fire.getDirectionX());
+  		fire.setDirectionY(0.97*fire.getDirectionY());
+  		rocket.setDirectionX(0.97*rocket.getDirectionX());
+  		rocket.setDirectionY(0.97*rocket.getDirectionY());
   	}
   	
   	ship.show();
   	ship.move();
   	fire.move();
-    pew.show();
-    pew.move();
+  	rocket.move();
 
 }
 
@@ -86,7 +97,7 @@ public void keyPressed() {
 	if (key == 's') {
 		sPressed = true;
 	}
-  if (key == 'q') {
+ 	if (key == 'q') {
       int ranPointDirection = (int)(Math.random()*360);
       int ranSetX = (int)(Math.random()*width);
       int ranSetY = (int)(Math.random()*height);     
@@ -100,6 +111,14 @@ public void keyPressed() {
       fire.setPointDirection(ranPointDirection);
       fire.setCenterX(ranSetX);
       fire.setCenterY(ranSetY);
+      rocket.setDirectionX(0);
+      rocket.setDirectionY(0);    
+      rocket.setPointDirection(ranPointDirection);
+      rocket.setCenterX(ranSetX);
+      rocket.setCenterY(ranSetY);
+    }
+    if (key == ' ') {
+    	bullets.add(new Bullet(ship));
     }
 }
 
