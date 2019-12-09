@@ -26,7 +26,7 @@ public void setup() {
  	}
 
  	for (int i = 0; i < 10; i++){
- 		asteroids.add(i, new Asteroid());
+ 		asteroids.add(i, new Asteroid((int)(Math.random()*5)));
  	}
 
 }

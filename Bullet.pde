@@ -17,4 +17,8 @@ class Bullet extends Floater {
 		mCenterX += mDirectionX;    
     	mCenterY += mDirectionY;       
 	}
+
+	public double getPointDirection() {
+		return mPointDirection;
+	}
 }
