@@ -46,6 +46,14 @@ public void draw() {
   	bullets.get(i).show();
   }
 
+  for (int i = asteroids.size() - 1; i >= 0; i--) {
+    for (int j = bullets.size() - 1; j >= 0; j--) {
+      if (asteroids) {
+
+      }
+    }
+  }
+
   if (dPressed == true) {
   	ship.turn(7);
   	fire.turn(7);
