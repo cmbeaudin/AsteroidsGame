@@ -4,16 +4,15 @@ Flame rocket;
 Star[] starlings;
 ArrayList <Asteroid> asteroids;
 ArrayList <Bullet> bullets; 
-boolean dPressed;
-boolean aPressed;
-boolean wPressed;
-boolean sPressed;
+boolean dPressed, aPressed, wPressed, sPressed;
+boolean gameStatus;
 
 public void setup() {
 	size(750, 750);
 	frameRate(-1);
 	noStroke();
 
+  gameStatus = ture;
  	ship = new Spaceship();
  	fire = new Flame(#ff2600);
  	rocket = new Flame(#1567eb);
@@ -46,13 +45,16 @@ public void draw() {
   	bullets.get(i).show();
   }
 
-  for (int i = asteroids.size() - 1; i >= 0; i--) {
-    for (int j = bullets.size() - 1; j >= 0; j--) {
-      if (asteroids) {
-
+  if(gameStatus == true) {
+    for (int i = asteroids.size() - 1; i >= 0; i--) {
+      for (int j = bullets.size() - 1; j >= 0; j--) {
+        if ((gameStatus == true) && dist((float)(bullets.get(j).getCenterX()), (float)(bullets.get(j).getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 20*asteroids.get(i).getDilation()) {
+          asteroids.remove(i);
+        } 
       }
     }
-  }
+  }  
+  
 
   if (dPressed == true) {
   	ship.turn(7);
