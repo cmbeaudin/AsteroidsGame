@@ -12,7 +12,7 @@ public void setup() {
 	frameRate(-1);
 	noStroke();
 
-  gameStatus = ture;
+  gameStatus = true;
  	ship = new Spaceship();
  	fire = new Flame(#ff2600);
  	rocket = new Flame(#1567eb);
@@ -57,26 +57,26 @@ public void draw() {
   
 
   if (dPressed == true) {
-  	ship.turn(7);
-  	fire.turn(7);
-  	rocket.turn(7);
+  	ship.turn(5);
+  	fire.turn(5);
+  	rocket.turn(5);
   }
   if (aPressed == true) {
-  	ship.turn(-7);
-  	fire.turn(-7);
-  	rocket.turn(-7);
+  	ship.turn(-5);
+  	fire.turn(-5);
+  	rocket.turn(-5);
   }
   if (wPressed == true) {
   	fire.show();
-  	ship.accelerate(0.3);
-  	fire.accelerate(0.3);
-  	rocket.accelerate(0.3);
+  	ship.accelerate(0.1);
+  	fire.accelerate(0.1);
+  	rocket.accelerate(0.1);
   }
   if (sPressed == true) {
   	rocket.show();
-  	ship.accelerate(-0.3);
-  	fire.accelerate(-0.3);
-  	rocket.accelerate(-0.3);
+  	ship.accelerate(-0.1);
+  	fire.accelerate(-0.1);
+  	rocket.accelerate(-0.1);
   }
   if (wPressed == false && sPressed == false) {
   	ship.setDirectionX(0.98*ship.getDirectionX());
