@@ -6,6 +6,7 @@ ArrayList <Asteroid> asteroids;
 ArrayList <Bullet> bullets; 
 boolean dPressed, aPressed, wPressed, sPressed;
 boolean gameStatus;
+boolean winLose;
 
 public void setup() {
 	size(750, 750);
@@ -45,16 +46,34 @@ public void draw() {
   	bullets.get(i).show();
   }
 
-  if(gameStatus == true) {
+  if (gameStatus == true) {
+    ArrayList <Integer> asteroidsRemove = new ArrayList <Integer>();
+    ArrayList <Integer> bulletsRemove = new ArrayList <Integer>();
     for (int i = asteroids.size() - 1; i >= 0; i--) {
       for (int j = bullets.size() - 1; j >= 0; j--) {
-        if ((gameStatus == true) && dist((float)(bullets.get(j).getCenterX()), (float)(bullets.get(j).getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 20*asteroids.get(i).getDilation()) {
-          asteroids.remove(i);
+        if (dist((float)(bullets.get(j).getCenterX()), (float)(bullets.get(j).getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 17*asteroids.get(i).getDilation()) {
+          bulletsRemove.add(j);
+          asteroidsRemove.add(i);
+          for (int k : bulletsRemove) {
+            bullets.remove(k);
+          }
+          for (int l : asteroidsRemove) {
+            asteroids.remove(l);
+          }
+          // asteroids.remove(i);
+          // bullets.remove(j);
+
+          // if (asteroids.size() == 0) {
+          //   gameStatus = false;
+          //   winLose = true;
+          //   if (winLose == true) {
+              
+          //   }
+          // }
         } 
       }
     }
   }  
-  
 
   if (dPressed == true) {
   	ship.turn(5);

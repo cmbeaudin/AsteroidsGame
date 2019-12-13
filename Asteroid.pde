@@ -5,7 +5,7 @@ class Asteroid extends Floater {
 
 	public Asteroid (int ranColor) {
 		dilation = (int)(Math.random()*2)+2;
-		rotSpeed = (int)(Math.random()*3)-1;
+		rotSpeed = (int)(Math.random()*2)-1;
 		ranColor = (int)(Math.random()*5);
 
     	xCorners = new int[] {
@@ -52,6 +52,10 @@ class Asteroid extends Floater {
     	mDirectionY = (Math.random()*3)-1;
     	mPointDirection = (int)(Math.random()*360);
 
+	}
+	public void move() {
+		turn(rotSpeed);
+		super.move();
 	}
 
 	public int getDilation() {
