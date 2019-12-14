@@ -8,7 +8,7 @@ class Bullet extends Floater {
 		mDirectionY = 5 * Math.sin(dRadians) + theShip.mDirectionY;
 		mColor = #ff2200;
 	}
-	public void show () {
+	public void show() {
 		fill(255);
 		noStroke();
 		ellipse((float) mCenterX, (float) mCenterY, 5, 5);

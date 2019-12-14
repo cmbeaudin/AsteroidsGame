@@ -7,6 +7,7 @@ ArrayList <Bullet> bullets;
 boolean dPressed, aPressed, wPressed, sPressed;
 boolean gameStatus;
 boolean winLose;
+int shipHealth;
 
 public void setup() {
 	size(750, 750);
@@ -14,6 +15,7 @@ public void setup() {
 	noStroke();
 
   gameStatus = true;
+  shipHealth = 100;
  	ship = new Spaceship();
  	fire = new Flame(#ff2600);
  	rocket = new Flame(#1567eb);
@@ -37,13 +39,13 @@ public void draw() {
   for (int i = 0; i < starlings.length; i++) {
   	starlings[i].show();
   }
+  for (int i = bullets.size() - 1; i >= 0; i--) {
+    bullets.get(i).move();
+    bullets.get(i).show();
+  }
   for (int i = 0; i < asteroids.size(); i++) {
   	asteroids.get(i).show();
   	asteroids.get(i).move();
-  }
-  for (int i = bullets.size() - 1; i >= 0; i--) {
-  	bullets.get(i).move();
-  	bullets.get(i).show();
   }
 
   if (gameStatus == true) {
@@ -51,25 +53,15 @@ public void draw() {
     ArrayList <Integer> bulletsRemove = new ArrayList <Integer>();
     for (int i = asteroids.size() - 1; i >= 0; i--) {
       for (int j = bullets.size() - 1; j >= 0; j--) {
-        if (dist((float)(bullets.get(j).getCenterX()), (float)(bullets.get(j).getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 17*asteroids.get(i).getDilation()) {
+        if (dist((float)(bullets.get(j).getCenterX()), (float)(bullets.get(j).getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 8*asteroids.get(i).getDilation()) {
           bulletsRemove.add(j);
           asteroidsRemove.add(i);
-          // asteroids.remove(i);
-          // bullets.remove(j);
-
-          // if (asteroids.size() == 0) {
-          //   gameStatus = false;
-          //   winLose = true;
-          //   if (winLose == true) {
-              
-          //   }
-          // }
         } 
+        if (dist((float)(ship.getCenterX()), (float)(ship.getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 6) {
+          shipHealth -= 10;
+          System.out.println(shipHealth);
+        }
       }
-    }
-    for (int i = asteroidsRemove.size() - 1; i >= 0; i--) {
-      asteroids.remove(asteroidsRemove.get(i));
-
     }
 
     for (int i : asteroidsRemove) {
@@ -78,14 +70,16 @@ public void draw() {
     for (int j : bulletsRemove) {
       bullets.remove(j);
     }
-    // for (int i = asteroidsRemove.size() - 1; i >= 0; i--) {
-    //   asteroids.remove(asteroidsRemove.get(i));
-    // }
-    // for (int j = bulletsRemove.size() - 1; j >= 0; j--) {
-    //   bullets.remove(bulletsRemove.get(j));
-    // }
 
-  }  
+    if (asteroids.size() == 0) {
+      winLose = true;
+    }
+
+  } else {
+      if (winLose == true) {
+
+      }
+  }
 
   if (dPressed == true) {
   	ship.turn(5);
