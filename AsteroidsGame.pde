@@ -1,6 +1,7 @@
 Spaceship ship;
 Flame fire;
 Flame rocket;
+HealthBar health;
 Star[] starlings;
 ArrayList <Asteroid> asteroids;
 ArrayList <Bullet> bullets; 
@@ -15,7 +16,8 @@ public void setup() {
 	noStroke();
 
   gameStatus = true;
-  shipHealth = 450;
+  shipHealth = 300;
+  health = new HealthBar();
  	ship = new Spaceship();
  	fire = new Flame(#ff2600);
  	rocket = new Flame(#1567eb);
@@ -73,11 +75,20 @@ public void draw() {
 
     if (asteroids.size() == 0) {
       winLose = true;
+      gameStatus = false;
+    } else if (shipHealth == 0) {
+      winLose = false;
+      gameStatus = false;
     }
 
   } else {
       if (winLose == true) {
-
+        textSize(300);
+        text("YOU", 70, height/2 - 25);
+        text("WIN!", 70, height/2 + 225);
+      } else if (winLose == false) {
+        textSize(32);
+        text("Game over", width/2, height/2);
       }
   }
 
@@ -117,6 +128,7 @@ public void draw() {
   fire.move();
   rocket.move();
 
+  health.show(shipHealth);
 }
 
 public void keyPressed() {
