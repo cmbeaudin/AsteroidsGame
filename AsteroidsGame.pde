@@ -15,7 +15,7 @@ public void setup() {
 	noStroke();
 
   gameStatus = true;
-  shipHealth = 100;
+  shipHealth = 450;
  	ship = new Spaceship();
  	fire = new Flame(#ff2600);
  	rocket = new Flame(#1567eb);
@@ -27,7 +27,7 @@ public void setup() {
  		starlings[i] = new Star();
  	}
  
- 	for (int i = 0; i < 10; i++){
+ 	for (int i = 0; i < 10; i++) {
  		asteroids.add(i, new Asteroid((int)(Math.random()*5)));
  	}
 
@@ -53,12 +53,12 @@ public void draw() {
     ArrayList <Integer> bulletsRemove = new ArrayList <Integer>();
     for (int i = asteroids.size() - 1; i >= 0; i--) {
       for (int j = bullets.size() - 1; j >= 0; j--) {
-        if (dist((float)(bullets.get(j).getCenterX()), (float)(bullets.get(j).getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 8*asteroids.get(i).getDilation()) {
+        if (dist((float)(bullets.get(j).getCenterX()), (float)(bullets.get(j).getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 10*asteroids.get(i).getDilation()) {
           bulletsRemove.add(j);
           asteroidsRemove.add(i);
         } 
-        if (dist((float)(ship.getCenterX()), (float)(ship.getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 6) {
-          shipHealth -= 10;
+        if (dist((float)(ship.getCenterX()), (float)(ship.getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 10*asteroids.get(i).getDilation()) {
+          shipHealth--; 
           System.out.println(shipHealth);
         }
       }
