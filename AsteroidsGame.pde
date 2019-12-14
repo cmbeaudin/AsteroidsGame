@@ -61,7 +61,6 @@ public void draw() {
         } 
         if (dist((float)(ship.getCenterX()), (float)(ship.getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 10*asteroids.get(i).getDilation()) {
           shipHealth--; 
-          System.out.println(shipHealth);
         }
       }
     }
