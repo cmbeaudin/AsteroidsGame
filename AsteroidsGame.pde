@@ -76,7 +76,7 @@ public void draw() {
     if (asteroids.size() == 0) {
       winLose = true;
       gameStatus = false;
-    } else if (shipHealth == 0) {
+    } else if (shipHealth <= 0) {
       winLose = false;
       gameStatus = false;
     }
@@ -84,11 +84,14 @@ public void draw() {
   } else {
       if (winLose == true) {
         textSize(300);
+        fill(#C0D890);
         text("YOU", 70, height/2 - 25);
         text("WIN!", 70, height/2 + 225);
       } else if (winLose == false) {
-        textSize(32);
-        text("Game over", width/2, height/2);
+        textSize(250);
+        fill(#ff9b9b);
+        text("GAME", 25, height/2 - 25);
+        text("OVER", 50, height/2 + 225);
       }
   }
 
@@ -129,6 +132,7 @@ public void draw() {
   rocket.move();
 
   health.show(shipHealth);
+
 }
 
 public void keyPressed() {
