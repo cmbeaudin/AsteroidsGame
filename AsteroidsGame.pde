@@ -136,6 +136,8 @@ public void draw() {
 }
 
 public void keyPressed() {
+  int bulletCount = 0;
+
 	if (key == 'a') {
 		aPressed = true;
 	}
@@ -169,6 +171,10 @@ public void keyPressed() {
     rocket.setCenterY(ranSetY);
   }
   if (key == ' ') {
+    bulletCount++;
+  }
+
+  for (int i = 0; i < bulletCount; i++){
     bullets.add(new Bullet(ship));
   }
 }
