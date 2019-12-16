@@ -8,6 +8,7 @@ ArrayList <Bullet> bullets;
 boolean dPressed, aPressed, wPressed, sPressed;
 boolean gameStatus;
 boolean winLose;
+boolean hasShot;
 int shipHealth;
 
 public void setup() {
@@ -15,6 +16,7 @@ public void setup() {
 	frameRate(-1);
 	noStroke();
 
+  hasShot = false;
   gameStatus = true;
   shipHealth = 300;
   health = new HealthBar();
@@ -50,7 +52,7 @@ public void draw() {
   	asteroids.get(i).move();
   }
 
-  if (gameStatus == true) {
+  if (gameStatus) {
     ArrayList <Integer> asteroidsRemove = new ArrayList <Integer>();
     ArrayList <Integer> bulletsRemove = new ArrayList <Integer>();
     for (int i = asteroids.size() - 1; i >= 0; i--) {
@@ -59,7 +61,7 @@ public void draw() {
           bulletsRemove.add(j);
           asteroidsRemove.add(i);
         } 
-        if (dist((float)(ship.getCenterX()), (float)(ship.getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 10*asteroids.get(i).getDilation()) {
+        if (dist((float)(ship.getCenterX()), (float)(ship.getCenterY()), (float)(asteroids.get(i).getCenterX()), (float)(asteroids.get(i).getCenterY())) < 10*asteroids.get(i).getDilation() + 10) {
           shipHealth--; 
         }
       }
@@ -80,37 +82,41 @@ public void draw() {
       gameStatus = false;
     }
 
+
   } else {
-      if (winLose == true) {
+
+      if (winLose) {
         textSize(300);
-        fill(#C0D890);
+        fill(#2E7F18);
         text("YOU", 70, height/2 - 25);
         text("WIN!", 70, height/2 + 225);
-      } else if (winLose == false) {
+      } else {
         textSize(250);
-        fill(#ff9b9b);
+        fill(#C82538);
         text("GAME", 25, height/2 - 25);
         text("OVER", 50, height/2 + 225);
       }
+
+
   }
 
-  if (dPressed == true) {
+  if (dPressed) {
   	ship.turn(5);
   	fire.turn(5);
   	rocket.turn(5);
   }
-  if (aPressed == true) {
+  if (aPressed) {
   	ship.turn(-5);
   	fire.turn(-5);
   	rocket.turn(-5);
   }
-  if (wPressed == true) {
+  if (wPressed) {
   	fire.show();
   	ship.accelerate(0.1);
   	fire.accelerate(0.1);
   	rocket.accelerate(0.1);
   }
-  if (sPressed == true) {
+  if (sPressed) {
   	rocket.show();
   	ship.accelerate(-0.1);
   	fire.accelerate(-0.1);
@@ -124,7 +130,7 @@ public void draw() {
   	rocket.setDirectionX(0.98*rocket.getDirectionX());
   	rocket.setDirectionY(0.98*rocket.getDirectionY());
   }
-  
+
   ship.show();
   ship.move();
   fire.move();
@@ -170,12 +176,10 @@ public void keyPressed() {
     rocket.setCenterY(ranSetY);
   }
   if (key == ' ') {
-    bulletCount++;
+    bullets.add(new Bullet(ship));
+    hasShot = true;
   }
 
-  for (int i = 0; i < bulletCount; i++){
-    bullets.add(new Bullet(ship));
-  }
 }
 
 public void keyReleased() {
@@ -190,5 +194,8 @@ public void keyReleased() {
 	}
 	if (key == 's') {
 		sPressed = false;
-	}
+	} 
+  if (key == ' ') {
+    hasShot = false;
+  }
 }

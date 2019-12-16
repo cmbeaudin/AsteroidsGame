@@ -1,5 +1,5 @@
 class AsteroidBreak extends Floater {
-	public AsteroidBreak (Asteroid newAsteroids) {
-		
+	public AsteroidBreak (Asteroid oldAsteroids) {
+
 	}
 }

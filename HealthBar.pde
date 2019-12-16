@@ -3,7 +3,7 @@ class HealthBar {
 	int mHealth;
 	public HealthBar() {
 		mColor = #2E7F18;
-		mHealth = 300;
+		mHealth = 360;
 	}
 
 	public void show(int newHealth) {
